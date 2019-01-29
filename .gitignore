@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+
+/worldcitiespop.csv
+/worldcitiespop.csv.gz
+/invalid.csv
