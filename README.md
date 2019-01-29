@@ -7,6 +7,9 @@ Homework for "Introduction to Systems Programming and Rust Programming Language"
 Print in terminal:
 
 git clone https://github.com/alexey-pronkin/rust_csv_filter.git
+
 cd rust_csv_filter
+
 cargo build
+
 ./target/debug/tsv worldcitiespop.csv
