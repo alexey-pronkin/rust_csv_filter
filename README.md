@@ -2,7 +2,7 @@
 
 Homework for "Introduction to Systems Programming and Rust Programming Language" Skoltech ISP course
 
-#Usage:
+# Usage:
 
 Print in terminal:
 
