@@ -1,6 +1,6 @@
 # rust_csv_filter
 
-Homework for skoltech rust isp course
+Homework for "Introduction to Systems Programming and Rust Programming Language" Skoltech ISP course
 
 #Usage:
 
