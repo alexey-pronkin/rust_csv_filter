@@ -1,0 +1,54 @@
+name: tsv
+version: "0.2"
+author: Aleksei Pronkin
+about: Process worldcitiespop.csv file
+args:
+    - INPUT:
+        help: path to input file
+        required: true
+        index: 1
+    - population-not-none:
+        help: will return only cities with known population
+        required: false
+    - population-none:
+        help: will return cities with unknown population
+        required: false
+    - population-gt:
+        value_name: number
+        takes_value: true
+        help: Sets a custom config file
+    - population-lt:
+        value_name: number
+        takes_value: true
+        help: will return cities with population smaller than given number
+        takes_value: true
+    - population-not-none:
+        short: v
+        multiple: true
+        help: Sets the level of verbosity
+    - out:
+        value_name: file_path
+        takes_value: true
+        help: instead of printing results into standard output will write them into the file
+
+# subcommands:
+#     - test:
+#         about: controls testing features
+#         version: "1.3"
+#         author: Someone E. <someone_else@other.com>
+#         args:
+#             - debug:
+#                 short: d
+#                 help: print debug information
+
+# // First filter out cities with population bigger than 100 000, but smaller than 1 000 000. 
+
+# // --population-not-none will return only cities with known population
+
+# // --population-none will return cities with unknown population
+
+# // --population-gt <number> will return cities with population greater than given number
+
+# // --population-lt <number> will return cities with population smaller than given number
+
+# // --out <file_path> instead of printing results into standard output will write them into the file

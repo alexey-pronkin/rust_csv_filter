@@ -1,9 +1,12 @@
 extern crate csv;
 extern crate serde;
-
+#[macro_use]
+extern crate clap;
 #[macro_use]
 extern crate serde_derive;
 
+
+use clap::App;
 use std::env;
 use std::error::Error;
 use std::ffi::OsString;
@@ -66,6 +69,8 @@ fn run() -> Result<(), Box<Error>> {
     Ok(())
 }
 
+
+#[cfg(feature = "yaml")]
 /// Returns the first positional argument sent to this process. If there are no
 /// positional arguments, then this returns an error.
 fn get_first_arg() -> Result<OsString, Box<Error>> {
@@ -73,19 +78,16 @@ fn get_first_arg() -> Result<OsString, Box<Error>> {
         None => Err(From::from("expected 1 argument, but got none")),
         Some(file_path) => Ok(file_path),
     }
+    match env::args_os().nth(1) {
+        None => Err(From::from("expected 1 argument, but got none")),
+        Some(file_path) => Ok(file_path),
+    }
+    match env::args_os().nth(1) {
+        None => Err(From::from("expected 1 argument, but got none")),
+        Some(file_path) => Ok(file_path),
+    }
 }
 
-// First filter out cities with population bigger than 100 000, but smaller than 1 000 000. 
-
-// --population-not-none will return only cities with known population
-
-// --population-none will return cities with unknown population
-
-// --population-gt <number> will return cities with population greater than given number
-
-// --population-lt <number> will return cities with population smaller than given number
-
-// --out <file_path> instead of printing results into standard output will write them into the file
 
 fn get_option_and_target_file() -> (String, String){
 	let args: Vec<String> = env::args().collect();
@@ -97,7 +99,12 @@ fn get_option_and_target_file() -> (String, String){
 	println!("Writing to {}", target_filename);
 	return (query.to_string(),target_filename.to_string())
 }
+
+
 fn main() {
+	
+    let yaml = load_yaml!("cli.yml");
+    let matches = App::from_yaml(yaml).get_matches();
     if let Err(err) = run() {
         println!("{}", err);
         process::exit(1);
